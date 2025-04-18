@@ -61,7 +61,7 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.registry }}/${{ github.repository_owner }}/${{ env.package-name }}:main
+          cache-from: type=registry,ref=${{ env.registry }}/${{ github.repository_owner }}/${{ env.package-name }}:latest
           file: scripts/docker/Dockerfile
           context: .
           platforms: linux/amd64,linux/arm64
