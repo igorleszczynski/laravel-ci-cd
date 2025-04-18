@@ -79,7 +79,6 @@ RUN set -ex; \
 # Install assets
 COPY --from=yarn --chown=www-data:www-data /var/www/html/public/build ./public/build
 
-COPY --chown=www-data:www-data .env.production .env
 COPY scripts/docker/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
