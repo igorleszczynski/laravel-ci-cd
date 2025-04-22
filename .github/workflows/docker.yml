@@ -61,10 +61,12 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.registry }}/${{ github.repository_owner }}/${{ env.package-name }}:latest
+          #          cache-from: type=registry,ref=${{ env.registry }}/${{ github.repository_owner }}/${{ env.package-name }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           file: scripts/docker/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
