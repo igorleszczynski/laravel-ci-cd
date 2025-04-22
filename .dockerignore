@@ -10,7 +10,8 @@
 bootstrap/cache/*
 database/*.sqlite
 .env
-CODE_OF_CONDUCT.md
+.env.example
+*.md
 docker-compose.prod.yml
 docker-compose.dev.yml
 Dockerfile
