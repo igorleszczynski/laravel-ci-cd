@@ -46,7 +46,7 @@ class SetupApplication extends Command
      */
     protected function seed(): void
     {
-        $this->artisan('✓ Seeding database', 'migrate', ['--force' => true]);
+        $this->artisan('✓ Seeding database', 'db:seed', ['--force' => true]);
     }
 
     private function artisan(string $message, string $command, array $options = []): void
