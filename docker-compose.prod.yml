@@ -16,9 +16,9 @@ services:
         condition: service_healthy
     networks:
       - laravel-ci-cd-network
-    volumes:
-      - 'laravel-ci-cd-app:/var/www/html'
     restart: always
+    volumes:
+      - 'laravel-ci-cd-public:/var/www/html/public'
   nginx:
     image: nginx:latest
     container_name: 'nginx'
@@ -26,7 +26,7 @@ services:
       - '${APP_PORT:-80}:80'
     volumes:
       - './scripts/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro'
-      - 'laravel-ci-cd-app:/var/www/html:ro'
+      - 'laravel-ci-cd-public:/var/www/html/public:ro'
     networks:
       - laravel-ci-cd-network
     depends_on:
@@ -59,7 +59,7 @@ services:
 volumes:
   laravel-ci-cd-mysql:
     driver: local
-  laravel-ci-cd-app:
+  laravel-ci-cd-public:
     driver: local
 networks:
   laravel-ci-cd-network:
